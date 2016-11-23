@@ -14,6 +14,9 @@
 		DE9768A31DE4091A008C5374 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE9768A11DE4091A008C5374 /* LaunchScreen.storyboard */; };
 		DE9768AE1DE4091A008C5374 /* HomeKitAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9768AD1DE4091A008C5374 /* HomeKitAppTests.swift */; };
 		DE9768B91DE4091A008C5374 /* HomeKitAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9768B81DE4091A008C5374 /* HomeKitAppUITests.swift */; };
+		DE9768C91DE40931008C5374 /* HomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE9768C81DE40931008C5374 /* HomeKit.framework */; };
+		DE9768CB1DE40F5E008C5374 /* DiscoveryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9768CA1DE40F5E008C5374 /* DiscoveryTableViewController.swift */; };
+		DE9768CD1DE415E9008C5374 /* AccessoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9768CC1DE415E9008C5374 /* AccessoryTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,10 @@
 		DE9768B41DE4091A008C5374 /* HomeKitAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeKitAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE9768B81DE4091A008C5374 /* HomeKitAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeKitAppUITests.swift; sourceTree = "<group>"; };
 		DE9768BA1DE4091A008C5374 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE9768C61DE40931008C5374 /* HomeKitApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HomeKitApp.entitlements; sourceTree = "<group>"; };
+		DE9768C81DE40931008C5374 /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
+		DE9768CA1DE40F5E008C5374 /* DiscoveryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryTableViewController.swift; sourceTree = "<group>"; };
+		DE9768CC1DE415E9008C5374 /* AccessoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessoryTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE9768C91DE40931008C5374 /* HomeKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +89,7 @@
 				DE9768AC1DE4091A008C5374 /* HomeKitAppTests */,
 				DE9768B71DE4091A008C5374 /* HomeKitAppUITests */,
 				DE9768961DE4091A008C5374 /* Products */,
+				DE9768C71DE40931008C5374 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,10 +106,13 @@
 		DE9768971DE4091A008C5374 /* HomeKitApp */ = {
 			isa = PBXGroup;
 			children = (
+				DE9768C61DE40931008C5374 /* HomeKitApp.entitlements */,
 				DE9768981DE4091A008C5374 /* AppDelegate.swift */,
-				DE97689A1DE4091A008C5374 /* ViewController.swift */,
 				DE97689C1DE4091A008C5374 /* Main.storyboard */,
 				DE97689F1DE4091A008C5374 /* Assets.xcassets */,
+				DE9768CA1DE40F5E008C5374 /* DiscoveryTableViewController.swift */,
+				DE97689A1DE4091A008C5374 /* ViewController.swift */,
+				DE9768CC1DE415E9008C5374 /* AccessoryTableViewController.swift */,
 				DE9768A11DE4091A008C5374 /* LaunchScreen.storyboard */,
 				DE9768A41DE4091A008C5374 /* Info.plist */,
 			);
@@ -123,6 +135,14 @@
 				DE9768BA1DE4091A008C5374 /* Info.plist */,
 			);
 			path = HomeKitAppUITests;
+			sourceTree = "<group>";
+		};
+		DE9768C71DE40931008C5374 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DE9768C81DE40931008C5374 /* HomeKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,7 +213,13 @@
 				TargetAttributes = {
 					DE9768941DE4091A008C5374 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = N6RP3H788Z;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HomeKit = {
+								enabled = 1;
+							};
+						};
 					};
 					DE9768A81DE4091A008C5374 = {
 						CreatedOnToolsVersion = 8.1;
@@ -259,6 +285,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE9768CD1DE415E9008C5374 /* AccessoryTableViewController.swift in Sources */,
+				DE9768CB1DE40F5E008C5374 /* DiscoveryTableViewController.swift in Sources */,
 				DE97689B1DE4091A008C5374 /* ViewController.swift in Sources */,
 				DE9768991DE4091A008C5374 /* AppDelegate.swift in Sources */,
 			);
@@ -412,6 +440,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HomeKitApp/HomeKitApp.entitlements;
+				DEVELOPMENT_TEAM = N6RP3H788Z;
 				INFOPLIST_FILE = HomeKitApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cheung.jason.HomeKitApp;
@@ -424,6 +454,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HomeKitApp/HomeKitApp.entitlements;
+				DEVELOPMENT_TEAM = N6RP3H788Z;
 				INFOPLIST_FILE = HomeKitApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cheung.jason.HomeKitApp;
@@ -505,6 +537,7 @@
 				DE9768BF1DE4091A008C5374 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DE9768C01DE4091A008C5374 /* Build configuration list for PBXNativeTarget "HomeKitAppTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +546,7 @@
 				DE9768C21DE4091A008C5374 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DE9768C31DE4091A008C5374 /* Build configuration list for PBXNativeTarget "HomeKitAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +555,7 @@
 				DE9768C51DE4091A008C5374 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
