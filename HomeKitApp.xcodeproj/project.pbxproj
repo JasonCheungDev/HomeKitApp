@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE2C10CC1DE7FF91004C590B /* VoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2C10CB1DE7FF91004C590B /* VoiceViewController.swift */; };
 		DE9768991DE4091A008C5374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9768981DE4091A008C5374 /* AppDelegate.swift */; };
 		DE97689B1DE4091A008C5374 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97689A1DE4091A008C5374 /* ViewController.swift */; };
 		DE97689E1DE4091A008C5374 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE97689C1DE4091A008C5374 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DE2C10CB1DE7FF91004C590B /* VoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceViewController.swift; sourceTree = "<group>"; };
 		DE9768951DE4091A008C5374 /* HomeKitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeKitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE9768981DE4091A008C5374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE97689A1DE4091A008C5374 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				DE9768CC1DE415E9008C5374 /* AccessoryTableViewController.swift */,
 				DE9768A11DE4091A008C5374 /* LaunchScreen.storyboard */,
 				DE9768A41DE4091A008C5374 /* Info.plist */,
+				DE2C10CB1DE7FF91004C590B /* VoiceViewController.swift */,
 			);
 			path = HomeKitApp;
 			sourceTree = "<group>";
@@ -213,7 +216,7 @@
 				TargetAttributes = {
 					DE9768941DE4091A008C5374 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = N6RP3H788Z;
+						DevelopmentTeam = ZGXQ9QPG4P;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.HomeKit = {
@@ -285,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE2C10CC1DE7FF91004C590B /* VoiceViewController.swift in Sources */,
 				DE9768CD1DE415E9008C5374 /* AccessoryTableViewController.swift in Sources */,
 				DE9768CB1DE40F5E008C5374 /* DiscoveryTableViewController.swift in Sources */,
 				DE97689B1DE4091A008C5374 /* ViewController.swift in Sources */,
@@ -441,7 +445,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HomeKitApp/HomeKitApp.entitlements;
-				DEVELOPMENT_TEAM = N6RP3H788Z;
+				DEVELOPMENT_TEAM = ZGXQ9QPG4P;
 				INFOPLIST_FILE = HomeKitApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cheung.jason.HomeKitApp;
@@ -455,7 +459,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HomeKitApp/HomeKitApp.entitlements;
-				DEVELOPMENT_TEAM = N6RP3H788Z;
+				DEVELOPMENT_TEAM = ZGXQ9QPG4P;
 				INFOPLIST_FILE = HomeKitApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cheung.jason.HomeKitApp;

@@ -10,13 +10,15 @@ import UIKit
 import HomeKit
 
 // Shows information about a particular accessory's service 
-class AccessoryTableViewController: UITableViewController, HMAccessoryDelegate, UIGestureRecognizerDelegate {
+class AccessoryTableViewController:
+    UITableViewController,
+    HMAccessoryDelegate,
+    UIGestureRecognizerDelegate
+{
 
     var accessory: HMAccessory?
     var data = [HMService]()
-    let cellIdentifier = "serviceId"
-    
-    
+    private let cellIdentifier = "serviceId"
     
     // MARK: - View controller
     
@@ -120,18 +122,59 @@ class AccessoryTableViewController: UITableViewController, HMAccessoryDelegate, 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        // TODO: Error might occur here
-        let service = data[indexPath.row] as HMService
-        
-        // Toggle the device service state (on / off)
-        let characteristic = service.characteristics[1] as HMCharacteristic
-        let toggleState = (characteristic.value as! Bool) ? false : true
-        characteristic.writeValue(NSNumber(value: toggleState as Bool), completionHandler: { (error) -> Void in
+        func serviceUpdatedHandler(error: Error?) -> Void{
             if error != nil {
                 print("Error attempting to update the service: \(error?.localizedDescription)")
             }
             self.tableView.reloadData()
-        })
-    }
+        }
+        
+        let service = data[indexPath.row] as HMService
+        
+        let foo = service.characteristics
+        for chara in foo {
+            print("==========")
+            print(chara)
+            print(chara.description)
+            print(chara.characteristicType)
+            print(chara.value)
+            print(chara.metadata)
+            print("Properties:")
+            for bar in chara.properties {
+                print(bar)
+            }
+            print("----------")
+        }
+        
+        // Toggle the device service state (on / off)
+        let powerStateC = service.characteristics[1] as HMCharacteristic
+        let toggleState = (powerStateC.value as! Bool) ? false : true
+        powerStateC.writeValue(NSNumber(value: toggleState as Bool), completionHandler: serviceUpdatedHandler)
+        
+        // Others 
+        let brightnessC = service.characteristics[2] as HMCharacteristic
+        let currentBrightness = brightnessC.value as! Int
+        let newBrightness = ((currentBrightness + 25) > 100) ? 0 : currentBrightness + 25
+        brightnessC.writeValue(NSNumber(value: newBrightness as Int), completionHandler: serviceUpdatedHandler)
+        
+        let hueC = service.characteristics[3] as HMCharacteristic
+        let currentHue = hueC.value as! Float
+        let newHue = ((currentHue + 30) > 360) ? 0 : currentHue + 30
+        hueC.writeValue(NSNumber(value: newHue as Float), completionHandler: serviceUpdatedHandler)
 
+        let saturationC = service.characteristics[4] as HMCharacteristic
+        let currentSaturation = saturationC.value as! Float
+        let newSaturation = (currentSaturation + 25) > 100 ? 0 : currentSaturation + 25
+        saturationC.writeValue(NSNumber(value: newSaturation as Float), completionHandler: serviceUpdatedHandler)
+    }
+    
 }
+
+/* LightBulb service notes 
+Characteristics[]
+ 0 - Name : String
+ 1 - Power state : Bool (off/on)
+ 2 - Brightness : Int (0-100)
+ 3 - Hue : Float (Arcdegrees 0-360)
+ 4 - Saturation : Float (0-100)
+ */

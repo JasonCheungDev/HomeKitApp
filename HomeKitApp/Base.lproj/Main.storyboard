@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11521.1" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="05F-9Q-fP7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11521.1" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YDG-23-vt2">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11517.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -73,7 +74,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0v2-Ly-HWt" id="EA2-Fs-OAu">
-                                    <frame key="frameInset" width="375" height="43"/>
+                                    <frame key="frameInset" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -141,6 +142,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OoS-Wb-6ia" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="844" y="600"/>
+        </scene>
+        <!--Voice View Controller-->
+        <scene sceneID="hEE-0X-ikW">
+            <objects>
+                <viewController id="YDG-23-vt2" customClass="VoiceViewController" customModule="HomeKitApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QTm-Xo-d1C"/>
+                        <viewControllerLayoutGuide type="bottom" id="R4P-3f-2IA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="O43-4W-O35">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="die-gQ-cGq">
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="onMicrophoneClick:" destination="YDG-23-vt2" eventType="touchUpInside" id="tec-sD-K7R"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HbV-SY-COO">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="83" id="j6i-Mc-KxF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HbV-SY-COO" firstAttribute="leading" secondItem="O43-4W-O35" secondAttribute="leadingMargin" constant="19" id="4JO-xv-4Ff"/>
+                            <constraint firstItem="die-gQ-cGq" firstAttribute="leading" secondItem="O43-4W-O35" secondAttribute="leading" constant="174" id="FvH-O1-exG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HbV-SY-COO" secondAttribute="trailing" constant="37" id="LGJ-h9-oqp"/>
+                            <constraint firstItem="HbV-SY-COO" firstAttribute="top" secondItem="QTm-Xo-d1C" secondAttribute="bottom" constant="54" id="VDt-zf-5Xc"/>
+                            <constraint firstItem="R4P-3f-2IA" firstAttribute="top" secondItem="die-gQ-cGq" secondAttribute="bottom" constant="115" id="lc5-7Y-7Od"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="microphoneButton" destination="die-gQ-cGq" id="qya-qp-5It"/>
+                        <outlet property="textView" destination="HbV-SY-COO" id="Hvv-K7-H60"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JR0-sJ-J7b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1856.8" y="520.38980509745136"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="I18-5V-2is">
