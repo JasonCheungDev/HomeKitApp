@@ -49,7 +49,7 @@
                     <navigationItem key="navigationItem" title="Root View Controller" id="FiC-M2-uhX">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="0zq-Qm-dcE">
                             <connections>
-                                <segue destination="68t-Xe-9wF" kind="show" id="1DA-zV-lGO"/>
+                                <segue destination="68t-Xe-9wF" kind="show" identifier="showDiscoverySegue" id="1DA-zV-lGO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -74,7 +74,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0v2-Ly-HWt" id="EA2-Fs-OAu">
-                                    <frame key="frameInset" width="375" height="44"/>
+                                    <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -220,9 +220,6 @@
                                     <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="Aqf-px-BVE" kind="show" identifier="showRoomsSegue" id="FRZ-mM-MJO"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -230,13 +227,22 @@
                             <outlet property="delegate" destination="Tzq-a3-l22" id="qXB-du-kJC"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="8ft-Im-PGe"/>
+                    <navigationItem key="navigationItem" id="8ft-Im-PGe">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dAA-Ji-caD">
+                            <connections>
+                                <action selector="onAddClick:" destination="Tzq-a3-l22" id="XC7-z8-0Xo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="Aqf-px-BVE" kind="show" identifier="showRoomsSegue" id="wlS-mw-OiJ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y3k-Rx-SUe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1889" y="120"/>
+            <point key="canvasLocation" x="-1900" y="119"/>
         </scene>
-        <!--Room Controller-->
+        <!--Navigation Item-->
         <scene sceneID="ezf-KB-LNA">
             <objects>
                 <tableViewController id="Aqf-px-BVE" customClass="RoomController" customModule="HomeKitApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -252,9 +258,6 @@
                                     <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="ieL-QI-h0y" kind="show" identifier="showAccesorySegue" id="D6n-D8-GUr"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -262,6 +265,19 @@
                             <outlet property="delegate" destination="Aqf-px-BVE" id="pQL-2Y-ScV"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Navigation Item" id="Pze-iG-oTs">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Zjn-Tu-4c1">
+                            <connections>
+                                <action selector="onAddClick:" destination="Aqf-px-BVE" id="Y2b-Fp-bVr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="ieL-QI-h0y" kind="show" identifier="showAccessoriesSegue" id="EF1-iZ-99a"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f5Z-eg-h2t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

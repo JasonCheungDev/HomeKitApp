@@ -15,6 +15,8 @@ class DiscoveryTableViewController: UITableViewController, HMAccessoryBrowserDel
     let browser = HMAccessoryBrowser()
     
     var accessories = [HMAccessory]()
+    var selectedHome : HMHome!
+    var selectedRoom : HMRoom!
     let cellIdentifier = "accessoryId"
 
     @IBOutlet weak var refreshButton: UIBarButtonItem!
@@ -39,6 +41,9 @@ class DiscoveryTableViewController: UITableViewController, HMAccessoryBrowserDel
     }
     
     func startSearching() {
+        // Add some feedback so the user knows whats goin on
+        title = "Searching"
+        
         // Prevent stacking calls 
         refreshButton.isEnabled = false
         
@@ -99,32 +104,27 @@ class DiscoveryTableViewController: UITableViewController, HMAccessoryBrowserDel
         // Get selected accessory
         let accessory = accessories[(indexPath as NSIndexPath).row] as HMAccessory
         
-        // Add to home and room
-        if let room = homeManager.primaryHome?.rooms.first as HMRoom? {
-            
-            // Add accessory to primary home
-            homeManager.primaryHome?.addAccessory(accessory, completionHandler: { (error) -> Void in
+        self.selectedHome.addAccessory(accessory, completionHandler: { (error) -> Void in
+            // Check for errors
+            if error != nil {
+                print("Error adding an accessory to home: \(error?.localizedDescription)")
+            } else {
                 
-                // Check for errors
-                if error != nil {
-                    print("Error adding an accessory to home: \(error?.localizedDescription)")
-                } else {
+                // Assign accessory to room
+                self.selectedHome.assignAccessory(accessory, to: self.selectedRoom, completionHandler: { (error) -> Void in
                     
-                    // Assign accessory to room
-                    self.homeManager.primaryHome?.assignAccessory(accessory, to: room, completionHandler: { (error) -> Void in
+                    // Check for errors
+                    if error != nil {
+                        print("Error assign an accessory to room: \(error?.localizedDescription)")
+                    } else {
                         
-                        // Check for errors
-                        if error != nil {
-                            print("Error assign an accessory to room: \(error?.localizedDescription)")
-                        } else {
-                            
-                            // All finished, go back to main view
-                            self.navigationController?.popViewController(animated: true)
-                        }
-                    })
-                }
-            })
-        }
+                        // All finished, go back to main view
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                })
+            }
+        })
+        
     }
 
 }

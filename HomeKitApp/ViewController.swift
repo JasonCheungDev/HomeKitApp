@@ -12,8 +12,8 @@ import HomeKit
 class ViewController: UITableViewController, HMHomeManagerDelegate {
 
     let homeManager = HMHomeManager()
-    var activeHome: HMHome?
-    var activeRoom: HMRoom?
+    var selectedHome: HMHome!
+    var selectedRoom: HMRoom!
     
     let cellIdentifier = "deviceId"
     var lastSelectedIndexRow = 0
@@ -29,22 +29,18 @@ class ViewController: UITableViewController, HMHomeManagerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        title = selectedRoom.name + " Accessories"
         tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == showServicesSegue) {
             let destination = segue.destination as! AccessoryTableViewController
-            if let accessories = activeRoom?.accessories {
-                destination.accessory = accessories[lastSelectedIndexRow] as HMAccessory?
-            }
-        }
-    }
-    
-    func updateControllerWithHome(_ home: HMHome) {
-        if let room = home.rooms.first as HMRoom? {
-            activeRoom = room
-            title = room.name + " Devices"
+            destination.accessory = selectedRoom.accessories[lastSelectedIndexRow]
+        } else if (segue.identifier == "showDiscoverySegue") {
+            let destination = segue.destination as! DiscoveryTableViewController
+            destination.selectedHome = selectedHome
+            destination.selectedRoom = selectedRoom
         }
     }
 
@@ -66,14 +62,7 @@ class ViewController: UITableViewController, HMHomeManagerDelegate {
     }
     
     func homeManagerDidUpdateHomes(_ manager: HMHomeManager) {
-        // Check if we have a home already
-        if let home = homeManager.primaryHome {
-            activeHome = home
-            updateControllerWithHome(home)
-        } else {    // else set it up
-            initialHomeSetup()
-        }
-        tableView.reloadData()
+        // ...
     }
     
     
@@ -81,18 +70,15 @@ class ViewController: UITableViewController, HMHomeManagerDelegate {
     // MARK: - Table Delegate 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let accessories = activeRoom?.accessories  {
-            return accessories.count
-        }
-        return 0
+        return selectedRoom.accessories.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as UITableViewCell?
-        let accessory = activeRoom!.accessories[indexPath.row] as HMAccessory
+        let accessory = selectedRoom.accessories[indexPath.row] as HMAccessory
         cell?.textLabel?.text = accessory.name
         
-        // ignore information service (additional info we can show if you want) 
+        // Show how many services this accessory has. Ignore information service (additional info we can show if you want)
         cell?.detailTextLabel?.text = "\(accessory.services.count - 1) service(s)"
         
         return (cell != nil) ? cell! : UITableViewCell()
@@ -128,54 +114,5 @@ class ViewController: UITableViewController, HMHomeManagerDelegate {
         */
     }
     
-    
-    // MARK: - Setup 
-    
-    // Create primary home if it doesn't exist yet
-    private func initialHomeSetup() {
-        
-        // Create a new test home and room, and then assign it as our primary home.
-        homeManager.addHome(withName: "Test Home", completionHandler: { (home, error) in
-            
-            // Check for errors
-            if error != nil {
-                print("Initial home creation error: \(error?.localizedDescription)")
-                return
-            }
-            
-            // Wrap to determine if any error occurred ... (guess)
-            if let discoveredHome = home {
-                
-                // Add a new (non-default) room to our new home
-                discoveredHome.addRoom(withName: "Test Room", completionHandler: { (room, error) in
-                    
-                    // Check for errors
-                    if error != nil {
-                        print("Initial room creation error: \(error?.localizedDescription)")
-                        return
-                    } else {
-                        self.updateControllerWithHome(discoveredHome)   // Set the active room for this controller
-                    }
-                    
-                })
-                
-                // Assign this home as our primary home 
-                self.homeManager.updatePrimaryHome(discoveredHome, completionHandler: { (error) in
-
-                    // Check for errors
-                    if error != nil {
-                        print("Reassigning primary home error: \(error?.localizedDescription)")
-                        return
-                    }
-                    
-                })
-                
-            } else {
-                print("Home creation error")
-            }
-        })
-    }
-
-
 }
 

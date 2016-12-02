@@ -16,8 +16,9 @@ class AccessoryTableViewController:
     UIGestureRecognizerDelegate
 {
 
+    var selectedRoom: HMRoom!
     var accessory: HMAccessory?
-    var data = [HMService]()
+    private var data = [HMService]()
     private let cellIdentifier = "serviceId"
     
     // MARK: - View controller

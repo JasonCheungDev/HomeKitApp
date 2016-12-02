@@ -13,11 +13,10 @@ class RoomController: UITableViewController, HMHomeManagerDelegate {
 
     var selectedHome : HMHome!
     
-    let homeManager = HMHomeManager()
-    
-    let cellIdentifier = "roomId"
-    let showAccessorySegue = "showAccesorySegue"
-    var lastSelectedIndexRow = 0
+    private let homeManager = HMHomeManager()
+    private let cellIdentifier = "roomId"
+    private let showAccessorySegue = "showAccessoriesSegue"
+    private var lastSelectedIndexRow = 0
     
     // MARK: - View Controller and Custom
     
@@ -38,18 +37,48 @@ class RoomController: UITableViewController, HMHomeManagerDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == showAccessorySegue) {
-            let destination = segue.destination as! RoomController
-            destination.selectedHome = homeManager.homes[lastSelectedIndexRow]
+            let destination = segue.destination as! ViewController
+            destination.selectedHome = selectedHome
+            destination.selectedRoom = selectedHome.rooms[lastSelectedIndexRow]
         }
     }
     
-    func updateControllerWithHome(_ home: HMHome) {
-        /*
-         if let room = home.rooms.first as HMRoom? {
-         activeRoom = room
-         title = room.name + " Devices"
-         }
-         */
+    @IBAction func onAddClick(_ sender: AnyObject) {
+        displayAddRoomAlert()
+    }
+    
+    func displayAddRoomAlert() {
+        //1. Create the alert controller.
+        let alert = UIAlertController(title: "Add Room", message: "Enter a name", preferredStyle: .alert)
+        
+        //2. Add the text field. You can configure it however you need.
+        alert.addTextField { (textField) in
+            // textField.text = "Room name"
+        }
+        
+        // 3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
+            print("Text field: \(textField?.text)")
+            self.addRoom((textField?.text)!)
+            }))
+        
+        // 4. Present the alert.
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func addRoom(_ name : String) {
+        selectedHome.addRoom(withName: name, completionHandler: { (newRoom, error) in
+            
+            // Check for error
+            if error != nil {
+                print("Adding room error: \(error?.localizedDescription)")
+                return
+            }
+            
+            // Update table
+            self.tableView.reloadData()
+        })
     }
     
     
@@ -70,16 +99,6 @@ class RoomController: UITableViewController, HMHomeManagerDelegate {
     }
     
     func homeManagerDidUpdateHomes(_ manager: HMHomeManager) {
-        
-        /*
-         // Check if we have a home already
-         if let home = homeManager.primaryHome {
-         activeHome = home
-         updateControllerWithHome(home)
-         } else {    // else set it up
-         initialHomeSetup()
-         }
-         tableView.reloadData()*/
     }
     
     
@@ -88,15 +107,15 @@ class RoomController: UITableViewController, HMHomeManagerDelegate {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return selectedHome.accessories.count
+        return selectedHome.rooms.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as UITableViewCell?
         
-        let accessory = selectedHome.accessories[indexPath.row]
-        cell?.textLabel?.text = accessory.name
+        let room = selectedHome.rooms[indexPath.row]
+        cell?.textLabel?.text = room.name
         
         return (cell != nil) ? cell! : UITableViewCell()
     }
