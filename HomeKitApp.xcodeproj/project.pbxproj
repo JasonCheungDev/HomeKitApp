@@ -455,6 +455,7 @@
 				CODE_SIGN_ENTITLEMENTS = HomeKitApp/HomeKitApp.entitlements;
 				DEVELOPMENT_TEAM = ZGXQ9QPG4P;
 				INFOPLIST_FILE = HomeKitApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cheung.jason.HomeKitApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -469,6 +470,7 @@
 				CODE_SIGN_ENTITLEMENTS = HomeKitApp/HomeKitApp.entitlements;
 				DEVELOPMENT_TEAM = ZGXQ9QPG4P;
 				INFOPLIST_FILE = HomeKitApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cheung.jason.HomeKitApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -482,6 +484,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = HomeKitAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cheung.jason.HomeKitAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -496,6 +499,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = HomeKitAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cheung.jason.HomeKitAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -509,6 +513,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = HomeKitAppUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cheung.jason.HomeKitAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -522,6 +527,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = HomeKitAppUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cheung.jason.HomeKitAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
