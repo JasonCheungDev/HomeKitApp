@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE27F55B1DF0C796006ED719 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27F55A1DF0C796006ED719 /* HomeController.swift */; };
+		DE27F55D1DF0C7B7006ED719 /* RoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27F55C1DF0C7B7006ED719 /* RoomController.swift */; };
 		DE2C10CC1DE7FF91004C590B /* VoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2C10CB1DE7FF91004C590B /* VoiceViewController.swift */; };
 		DE9768991DE4091A008C5374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9768981DE4091A008C5374 /* AppDelegate.swift */; };
 		DE97689B1DE4091A008C5374 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97689A1DE4091A008C5374 /* ViewController.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DE27F55A1DF0C796006ED719 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		DE27F55C1DF0C7B7006ED719 /* RoomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomController.swift; sourceTree = "<group>"; };
 		DE2C10CB1DE7FF91004C590B /* VoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceViewController.swift; sourceTree = "<group>"; };
 		DE9768951DE4091A008C5374 /* HomeKitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeKitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE9768981DE4091A008C5374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 				DE9768A11DE4091A008C5374 /* LaunchScreen.storyboard */,
 				DE9768A41DE4091A008C5374 /* Info.plist */,
 				DE2C10CB1DE7FF91004C590B /* VoiceViewController.swift */,
+				DE27F55A1DF0C796006ED719 /* HomeController.swift */,
+				DE27F55C1DF0C7B7006ED719 /* RoomController.swift */,
 			);
 			path = HomeKitApp;
 			sourceTree = "<group>";
@@ -289,7 +295,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE2C10CC1DE7FF91004C590B /* VoiceViewController.swift in Sources */,
+				DE27F55D1DF0C7B7006ED719 /* RoomController.swift in Sources */,
 				DE9768CD1DE415E9008C5374 /* AccessoryTableViewController.swift in Sources */,
+				DE27F55B1DF0C796006ED719 /* HomeController.swift in Sources */,
 				DE9768CB1DE40F5E008C5374 /* DiscoveryTableViewController.swift in Sources */,
 				DE97689B1DE4091A008C5374 /* ViewController.swift in Sources */,
 				DE9768991DE4091A008C5374 /* AppDelegate.swift in Sources */,
